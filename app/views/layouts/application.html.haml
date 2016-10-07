@@ -21,24 +21,23 @@
             %li{class: (params[:controller] == 'dashboards' ? 'active' : '')}
               %a{:href => "#"} Dashboard
             %li{class: (params[:controller] == 'projects' ? 'active' : '')}
-              %a{:href => "#"} Projects
+              =link_to t("Projects"), projects_path
             %li{class: (params[:controller] == 'tasks' ? 'active' : '')}
-              %a{:href => "#"} Tasks
+              =link_to t("Tasks"), tasks_path
           %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                Username
-                %span.caret
-              %ul.dropdown-menu
-                %li
-                  %a{:href => "#"} Action
-                %li
-                  %a{:href => "#"} Another action
-                %li
-                  %a{:href => "#"} Something else here
-                %li.divider{:role => "separator"}
-                %li
-                  %a{:href => "#"} Separated link
+            - if current_user
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  = current_user.name
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to t("logout"), "/logout"
+            - else
+              %li{class: (params[:action_name] == 'signup' ? 'active' : '')}
+                =link_to t("sign-up"), '/signup'
+              %li{class: (params[:action_name] == 'login' ? 'active' : '')}
+                =link_to t("log-in"), '/login'
     %div.container
       %div.row
         %div.col-md-12

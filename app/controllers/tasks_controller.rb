@@ -1,15 +1,17 @@
 class TasksController < ApplicationController
+  before_action :require_user, except: [:index, :show]
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = current_user ? Task.all : Task.where(project: Project.where(is_public: true)).all
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    redirect_to tasks_url unless @task
   end
 
   # GET /tasks/new
@@ -64,7 +66,7 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = current_user ? Task.find(params[:id]) : Task.where(project: Project.where(is_public: true), id: params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,4 +1,8 @@
-%p#notice= notice
+- if notice
+  .alert.alert-success.alert-dismissible{role: "alert"}
+    %button.close{type: "button", "data-dismiss" => "alert", "aria-label" => "Close"}
+      %span{"aria-hidden" => "true"} &times;
+    %strong= notice
 
 %h1= @task.title
 %p= @task.description
@@ -7,10 +11,10 @@
   = @task.project
 %p
   %b= t("Priority") + ":"
-  = @task.priority
+  = priority(@task)
 %p
   %b= t("Status") + ":"
-  = @task.status
+  = status(@task)
 
 = link_to(edit_task_path(@task), class: 'btn btn-primary') do
   %i.fa.fa-pencil

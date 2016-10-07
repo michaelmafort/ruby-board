@@ -1,11 +1,12 @@
 = form_for @project, class: 'form' do |f|
   - if @project.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+    .alert.alert-danger.alert-dismissible{role: "alert"}
+      %button.close{type: "button", "data-dismiss" => "alert", "aria-label" => "Close"}
+        %span{"aria-hidden" => "true"} &times;
+      %strong= "#{pluralize(@project.errors.count, "erro")} #{t("prohibited this project from being saved")}:"
       %ul
         - @project.errors.full_messages.each do |msg|
           %li= msg
-
   .form-group
     = f.label :title
     = f.text_field :title, class: 'form-control'

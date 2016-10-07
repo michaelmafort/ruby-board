@@ -1,6 +1,9 @@
 class Task < ApplicationRecord
   belongs_to :project
 
+  validates_presence_of :title, :status, :priority
+  validates_associated :project
+
   # Now the requirement is to create only this status options, but if in the future this requirement is changed,
   # the only method to change is this
   def status_options
@@ -22,5 +25,6 @@ class Task < ApplicationRecord
         {label: '!!! Urgent', value: 'urgent'}
       ]
   end
+
 
 end

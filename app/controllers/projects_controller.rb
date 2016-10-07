@@ -1,15 +1,17 @@
 class ProjectsController < ApplicationController
+  before_action :require_user, except: [:index, :show]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = current_user ? Project.all : Project.where(is_public: true).all
   end
 
   # GET /projects/1
   # GET /projects/1.json
   def show
+    redirect_to projects_url unless @project
   end
 
   # GET /projects/new
@@ -28,7 +30,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: t('Project was successfully created.') }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -64,7 +66,7 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      @project = current_user ? Project.find(params[:id]) : Project.where(is_public: true, id: params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
