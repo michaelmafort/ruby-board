@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  show: "Show"
+  edit: "Edit"
+  destroy: "Destroy"
+  "true": "Sim"
+  "false": "Não"

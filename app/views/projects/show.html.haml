@@ -1,0 +1,14 @@
+%p#notice= notice
+
+%h1
+  = @project.title
+  %span.badge= @project.is_public ? t(:public) : t(:private)
+%p
+  = @project.description
+
+= link_to(edit_project_path(@project), class: 'btn btn-success') do
+  %i.fa.fa-pencil
+  =t :edit
+= link_to(projects_path, class: 'btn btn-default') do
+  %i.fa.fa-chevron-left
+  =t :back

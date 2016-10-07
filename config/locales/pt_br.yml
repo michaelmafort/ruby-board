@@ -1,0 +1,61 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+pt_br:
+  activerecord:
+    attributes:
+      project:
+        title: "Título"
+        description: "Descrição"
+        is_public: "É público"
+      task:
+        title: "Título"
+        description: "Descrição"
+        project: "Projeto"
+        priority: "Prioridade"
+        status: "Status"
+  show: "Detalhes"
+  edit: "Editar"
+  destroy: "Excluir"
+  "true": "Sim"
+  "false": "Não"
+  "Listing projects": "Listando Projetos"
+  "Listing tasks": "Listando Tarefas"
+  "Title": "Título"
+  "Description": "Descrição"
+  "Is public": "Público?"
+  "new": "Cadastrar"
+  "public": "Público"
+  "private": "Privado"
+  "Editing project": "Editando Projeto"
+  "Editing task": "Editando Tarefa"
+  back: "Voltar"
+  save: "Salvar"
+  projects: "Projetos"
+  tasks: "Tarefas"
+  dashboard: "Dashboard"
+  "New project": "Novo projeto"
+  "New task": "Nova tarefa"
+  delete_confirm: "Confirma a exclusão?"
+  "Project": "Projeto"
+  "Priority": "Prioridade"
+  "Status": "Status"
+

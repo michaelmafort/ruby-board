@@ -1,0 +1,10 @@
+%h1= t("Editing task")
+
+= render 'form'
+
+= link_to(@task, class: 'btn btn-default') do
+  %i.fa.fa-list
+  =t :show
+= link_to(tasks_path, class: 'btn btn-default') do
+  %i.fa.fa-chevron-left
+  =t :back

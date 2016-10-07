@@ -1,0 +1,30 @@
+%h1= t "Listing projects"
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= t "Title"
+      %th= t "Description"
+      %th= t "Is public"
+      %th{width: 240}
+
+  %tbody
+    - @projects.each do |project|
+      %tr
+        %td= project.title
+        %td= project.description
+        %td= t project.is_public
+        %td
+          = link_to(project) do
+            %i.fa.fa-list
+            =t :show
+          = link_to(edit_project_path(project)) do
+            %i.fa.fa-pencil
+            =t :edit
+          = link_to(project, :method => :delete, :data => { :confirm => t(:delete_confirm) }) do
+            %i.fa.fa-trash
+            =t :destroy
+
+%br
+
+= link_to t(:new), new_project_path, class: 'btn btn-primary'

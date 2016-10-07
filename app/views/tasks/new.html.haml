@@ -1,0 +1,7 @@
+%h1= t("New task")
+
+= render 'form'
+
+= link_to(tasks_path, class: 'btn btn-default') do
+  %i.fa.fa-chevron-left
+  =t :back

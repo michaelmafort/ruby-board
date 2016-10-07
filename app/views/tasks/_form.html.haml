@@ -1,0 +1,25 @@
+= form_for @task, class: 'form' do |f|
+  - if @task.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
+      %ul
+        - @task.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label :project
+    = f.select :project_id, Project.order(title: :desc).all.collect{|proj| [proj.title, proj.id]}, {include_blank: true}, {class: 'form-control'}
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+  .form-group
+    = f.label :priority
+    = f.select :priority, @task.priority_options.collect{ |t| [t[:label], t[:value]]}, {include_blank: true}, {class: 'form-control'}
+  .form-group
+    = f.label :status
+    = f.select :status, @task.status_options.collect{ |t| [t[:label], t[:value]]}, {include_blank: true}, {class: 'form-control'}
+  .form-group
+    = f.submit t(:save), class: 'btn btn-primary'

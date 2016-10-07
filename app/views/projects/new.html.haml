@@ -1,0 +1,7 @@
+%h1= t("New project")
+
+= render 'form'
+
+= link_to(projects_path, class: 'btn btn-default') do
+  %i.fa.fa-chevron-left
+  =t :back

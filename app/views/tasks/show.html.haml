@@ -1,0 +1,20 @@
+%p#notice= notice
+
+%h1= @task.title
+%p= @task.description
+%p
+  %b= t("Project") + ":"
+  = @task.project
+%p
+  %b= t("Priority") + ":"
+  = @task.priority
+%p
+  %b= t("Status") + ":"
+  = @task.status
+
+= link_to(edit_task_path(@task), class: 'btn btn-primary') do
+  %i.fa.fa-pencil
+  =t :edit
+= link_to(tasks_path, class: 'btn btn-default') do
+  %i.fa.fa-chevron-left
+  =t :back
