@@ -2,5 +2,5 @@
 *.eot binary
 *.svg binary
 *.ttf binary
-*.woff bin
-*.woff2 bin
+*.woff binary
+*.woff2 binary
