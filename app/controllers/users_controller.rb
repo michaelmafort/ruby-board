@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def index
+    redirect_to "/signup"
+  end
   # GET /users/new
   def new
     @user = User.new
@@ -11,7 +14,6 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        @user = User.find_by_email(params[:session][:email])
         session[:user_id] = @user.id
         format.html { redirect_to projects_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }

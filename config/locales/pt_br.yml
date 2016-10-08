@@ -37,6 +37,16 @@ pt_br:
           attributes:
             title:
               blank: "não pode ficar em branco"
+        user:
+          attributes:
+            password:
+              blank: "não pode ficar em branco"
+            name:
+              blank: "não pode ficar em branco"
+            email:
+              invalid: "informado é inválido"
+            password_confirmation:
+              confirmation: "Senhas não conferem"
         task:
           attributes:
             project:
