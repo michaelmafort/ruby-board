@@ -1,0 +1,41 @@
+.container{"ng-app": "app"}
+  .row{"ng-controller": "TasksController"}
+    .col-md-3#todo
+      %h2 Todo
+      .panel.panel-default{"ng-repeat": "task in tasks.todo track by $index"}
+        .panel-heading
+          \{{task.title}}
+          %span.badge.pull-right= t(:private)
+        .panel-body
+          \{{task.description}}
+          %br
+          = link_to "Start", 'javascript:;', class: 'pull-right ajax', "ng-click": "moveTo($index, 'todo', 'inprogress')"
+    .col-md-3#inprogress
+      %h2 In progress
+      .panel.panel-default{"ng-repeat": "task in tasks.inprogress track by $index"}
+        .panel-heading
+          \{{task.title}}
+          %span.badge.pull-right= t(:private)
+        .panel-body
+          \{{task.description}}
+          %br
+          = link_to "Send to QA", 'javascript:;', class: 'pull-right ajax', "ng-click": "moveTo($index, 'inprogress', 'toverify')"
+    .col-md-3#toverify
+      %h2 To verify
+      .panel.panel-default{"ng-repeat": "task in tasks.toverify track by $index"}
+        .panel-heading
+          \{{task.title}}
+          %span.badge.pull-right= t(:private)
+        .panel-body
+          \{{task.description}}
+          %br
+          = link_to "Done", 'javascript:;', class: 'pull-right ajax', "ng-click": "moveTo($index, 'toverify', 'done')"
+    .col-md-3#done
+      %h2 Done
+      .panel.panel-default{"ng-repeat": "task in tasks.done track by $index"}
+        .panel-heading
+          \{{task.title}}
+          %span.badge.pull-right= t(:private)
+        .panel-body {{task.description}}
+
+= javascript_tag "var AUTH_TOKEN = '#{form_authenticity_token}';" if protect_against_forgery?

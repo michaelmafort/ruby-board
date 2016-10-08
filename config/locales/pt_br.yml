@@ -68,6 +68,7 @@ pt_br:
   tasks: "Tarefas"
   "Tasks": "Tarefas"
   dashboard: "Dashboard"
+  dashboards: "Dashboard"
   "New project": "Novo projeto"
   "New task": "Nova tarefa"
   delete_confirm: "Confirma a exclusão?"
